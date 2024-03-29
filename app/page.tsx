@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -20,7 +21,7 @@ export default function Page() {
           >
             Use Cases
           </a>
-          <button className="enter-app-btn">Enter App</button>
+          <Link href="/app" className="enter-app-btn">Enter App</Link>
         </div>
       </div>
       <div className="text-white p-12 flex flex-col md:flex-row">
@@ -37,7 +38,7 @@ export default function Page() {
             Stream payments directly to departments with ENS domains and
             subdomains
           </p>
-          <button className="enter-app-btn">Enter App</button>
+          <Link href="/app" className="enter-app-btn">Enter App</Link>
         </div>
         <div className="flex-1 flex justify-center items-center md:p-8">
           <Image
