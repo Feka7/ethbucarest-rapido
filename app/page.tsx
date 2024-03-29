@@ -145,7 +145,7 @@ export default function Page() {
       <div className=" text-white p-10 flex flex-col md:flex-row">
         <div className="flex-1 flex flex-col justify-center items-start text-left md:p-8">
           <Image
-            unoptimized
+            unoptimized={true}
             src={"/map.gif"}
             width={80}
             height={80}

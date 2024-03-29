@@ -57,7 +57,7 @@ export default function Page() {
   }
 
   async function createStream() {
-    await writeContractAsync({
+  await writeContractAsync({
       abi: [
         {
           inputs: [
@@ -166,6 +166,9 @@ export default function Page() {
         namehash(ensDomain),
       ],
     });
+
+    
+
   }
 
   const handleEnsDomainChange = (event: ChangeEvent<HTMLInputElement>) => {
