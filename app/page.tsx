@@ -5,7 +5,7 @@ export default function Page() {
     <main style={{ backgroundColor: "#0C0124", padding: "2rem 6rem" }}>
       <div className="navbar flex justify-between items-center px-4 py-2">
         <div className="logo">
-          <Image src="/Logo.png" alt="Logo" width={150} height={80} />
+          <Image src="/Logo.png" alt="Logo" width={200} height={80} />
         </div>
         <div className="nav-links flex items-center scroll-behavior: smooth">
           <a
@@ -138,12 +138,18 @@ export default function Page() {
         </div>
       </div>
       <div className="mt-26 text-center" id="how">
-        <p className="text-4xl font-bold text-[#79DFFF]">How it works</p>
+        <p className="text-5xl font-bold gradient-text">How it works</p>
         <div className="divider"></div>
       </div>
-      <div className=" text-white p-12 flex flex-col md:flex-row">
+      <div className=" text-white p-10 flex flex-col md:flex-row">
         <div className="flex-1 flex flex-col justify-center items-start text-left md:p-8">
-          {/* INSERIRE gif */}
+          <Image
+            unoptimized
+            src={"/map.gif"}
+            width={80}
+            height={80}
+            alt="map"
+          />
           <p className="mb-[10px] text-4xl font-bold">
             Seamless setup for DAOs
           </p>
@@ -221,19 +227,19 @@ export default function Page() {
         </div>
       </div>
       <div className="mt-[50px] text-center" id="company">
-        <p className="text-4xl font-bold text-[#79DFFF]">
+        <p className="text-4xl font-bold gradient-text">
           Company/DAO perspective
         </p>
         <div className="divider"></div>
       </div>
       <div className="text-white grid grid-cols-3 gap-4 p-4 mb-[120px]">
-        <div className="card w-96 glass">
+        <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
             <h2 className="card-title">Flexibility and efficiency: </h2>
             <p>optimize team compensation across all DAO verticals.</p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
             <h2 className="card-title">Simplify administrative tasks:</h2>
             <p>
@@ -242,7 +248,7 @@ export default function Page() {
             </p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
             <h2 className="card-title">Adaptable ownership:</h2>
             <p>
@@ -253,13 +259,13 @@ export default function Page() {
         </div>
       </div>
       <div className="mt-[50px] text-center" id="recipient">
-        <p className="text-4xl font-bold text-[#79DFFF]">
+        <p className="text-4xl font-bold gradient-text">
           Recipient (Contributor) perspective
         </p>
         <div className="divider"></div>
       </div>
       <div className="text-white grid grid-cols-3 gap-4 p-4">
-        <div className="card w-96 glass">
+        <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
             <h2 className="card-title">Real-time earning: </h2>
             <p>
@@ -268,7 +274,7 @@ export default function Page() {
             </p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
             <h2 className="card-title">Personalized payment streams:</h2>
             <p>
@@ -277,7 +283,7 @@ export default function Page() {
             </p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
             <h2 className="card-title">Adaptive compensation:</h2>
             <p>

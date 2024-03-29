@@ -80,3 +80,11 @@ html {
 .float {
   animation: float 5s ease-in-out infinite;
 }
+
+.gradient-text {
+    background: linear-gradient(45deg, #D765FF, #7EA9FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Aggiunta per compatibilità */
+  }
