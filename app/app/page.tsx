@@ -9,7 +9,6 @@ import { namehash } from "viem/ens";
 import { useReadContract } from 'wagmi'
 import { useLocalStorage } from "usehooks-ts";
 import Stream from "./_components/Stream";
-import next from "next";
 
 type Stream = {
   streamId: String;
@@ -199,7 +198,7 @@ export default function Page() {
         [
           address,
           process.env.NEXT_PUBLIC_RAPIDO_SMART_CONTRACT as Address,
-          amount,
+          Number(amount) * 1e18,
           token,
           cancelable === "True" ? true : false,
           transferable === "True" ? true : false,

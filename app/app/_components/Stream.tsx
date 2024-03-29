@@ -2,7 +2,7 @@
 
 import { useReadLocalStorage } from "usehooks-ts";
 import { Address } from "viem";
-import { useWriteContract } from "wagmi";
+import { useAccount, useWriteContract } from "wagmi";
 
 type Stream = {
   streamId: String;
@@ -15,7 +15,40 @@ type Stream = {
 export default function Stream() {
   const stream = useReadLocalStorage<Stream>("sablier-stream");
   const { writeContractAsync } = useWriteContract();
+  const { address } = useAccount()
   if (!stream?.streamId) return <></>;
+
+  async function withdrawReceiver() {
+  
+    await writeContractAsync({
+        abi: [
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "streamId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              }
+            ],
+            "name": "withdrawMax",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+            ],
+        address: process.env.NEXT_PUBLIC_RAPIDO_SMART_CONTRACT as Address,
+        functionName: "withdrawMax",
+        args: [
+          stream?.streamId,
+          process.env.NEXT_PUBLIC_RAPIDO_SMART_CONTRACT as Address,
+        ],
+      });
+    }
 
   async function withdrawMax() {
   
@@ -73,6 +106,7 @@ export default function Stream() {
               <td>{stream?.amount}</td>
               <td>{stream?.token}</td>
               <td><button onClick={withdrawMax}>withdraw</button></td>
+              <td><button onClick={withdrawReceiver}>withdraw2</button></td>
             </tr>
           </tbody>
         </table>
