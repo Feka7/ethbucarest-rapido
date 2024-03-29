@@ -4,8 +4,20 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { Address } from "viem";
-import { useAccount, useWriteContract } from "wagmi";
+import { useAccount, useEnsName, useWriteContract } from "wagmi";
 import { namehash } from "viem/ens";
+import { useReadContract } from 'wagmi'
+import { useLocalStorage } from "usehooks-ts";
+import Stream from "./_components/Stream";
+import next from "next";
+
+type Stream = {
+  streamId: String;
+  sender: String;
+  receiver: String;
+  amount: String;
+  token: String;
+}
 
 export default function Page() {
   const { writeContractAsync } = useWriteContract();
@@ -17,6 +29,36 @@ export default function Page() {
   const [transferable, setTransferable] = useState("");
   const [start, setStart] = useState("");
   const [duration, setDuration] = useState("");
+  const [value, setValue] = useLocalStorage<Stream>('sablier-stream', {
+    amount: "",
+    receiver: "",
+    sender: "",
+    streamId: "",
+    token: ""
+  })
+
+  // const {data: name} = useEnsName({
+  //   address: address,
+  // })
+
+  const nextStreamId = useReadContract({
+    abi:[ {
+      "inputs": [],
+      "name": "nextStreamId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }],
+    address: process.env.NEXT_PUBLIC_SABLIER_LOCKUP_LINEAR as Address,
+    functionName: 'nextStreamId',
+  })
+
 
   async function approve() {
     await writeContractAsync({
@@ -57,6 +99,7 @@ export default function Page() {
   }
 
   async function createStream() {
+  
   await writeContractAsync({
       abi: [
         {
@@ -166,9 +209,14 @@ export default function Page() {
         namehash(ensDomain),
       ],
     });
-
-    
-
+    setValue({
+      streamId: nextStreamId.data?.toString() || "",
+      amount: amount,
+      receiver: ensDomain,
+      sender: address || "",
+      token: "DAI"
+    })
+    nextStreamId.refetch()
   }
 
   const handleEnsDomainChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -295,6 +343,7 @@ export default function Page() {
           Create
         </button>
       </div>
+      <Stream />
     </main>
   );
 }
