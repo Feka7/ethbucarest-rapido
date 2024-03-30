@@ -55,17 +55,10 @@ export default function Page() {
       </div>
       <div className=" text-white p-10 flex flex-col md:flex-row">
         <div className="flex-1 flex flex-col justify-center items-start text-left md:p-8">
-          <Image
-            unoptimized={true}
-            src={"/map.gif"}
-            width={80}
-            height={80}
-            alt="map"
-          />
           <p className="mb-[10px] text-4xl font-bold">
           Seamless setup for DAOs
           </p>
-          <p className="max-w-md  text-2xl mt-4">
+          <p className="max-w-md  text-xl mt-4">
           mapping DAO’s teams to specific ENS subdomains - this one-time setup aligns the DAO organizational structure with payment streams
           </p>
         </div>
@@ -82,7 +75,7 @@ export default function Page() {
           <p className="mb-[10px] text-4xl font-bold">
           Stream payments effortlessly with Sablier
           </p>
-          <p className="max-w-md  text-2xl mt-4">
+          <p className="max-w-md  text-xl mt-4">
           employees or collaborators can withdraw their accumulated funds at any point from their specific subdomain
           </p>
         </div>
@@ -93,7 +86,7 @@ export default function Page() {
           <p className="mb-[10px] text-4xl font-bold">
           Dynamic ENS integration 
           </p>
-          <p className="max-w-md  text-2xl mt-4">
+          <p className="max-w-md  text-xl mt-4">
           ENS makes payments easy to manage and remember - funds are streamed to recognizable and memorable subdomains aligned with the DAO's structure
           </p>
         </div>
@@ -108,7 +101,7 @@ export default function Page() {
         <div className="flex-1 flex flex-col justify-center items-start text-left md:p-8">
           {/* INSERIRE gif */}
           <p className="mb-[10px] text-4xl font-bold">Ownership flexibility</p>
-          <p className="max-w-md  text-2xl mt-4">
+          <p className="max-w-md  text-xl mt-4">
           as roles within a DAO evolve, payment streams can be easily redirected to new recipients under the same subdomain, without any interruption
           </p>
         </div>
@@ -160,8 +153,9 @@ export default function Page() {
           </div>
         </div>
       </div>
-
-        <div className="divider"></div>      
+      <div className="flex place-content-center w-full mt-6">
+        <Link href="/app" className="enter-app-btn">Enter App</Link>
+      </div>     
     </main>
   );
 }
