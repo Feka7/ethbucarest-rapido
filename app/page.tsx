@@ -87,7 +87,7 @@ export default function Page() {
           Dynamic ENS integration 
           </p>
           <p className="max-w-md  text-xl mt-4">
-          ENS makes payments easy to manage and remember - funds are streamed to recognizable and memorable subdomains aligned with the DAO's structure
+          ENS makes payments easy to manage and remember - funds are streamed to recognizable and memorable subdomains aligned with the DAO&apos;s structure
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center md:p-8">
