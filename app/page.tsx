@@ -32,7 +32,7 @@ export default function Page() {
             <span className="text-[#79DFFF]">P</span>ayroll{" "}
             <span className="text-[#79DFFF]">I</span>ntegration for{" "}
             <span className="text-[#79DFFF]">D</span>AO{" "}
-            <span className="text-[#79DFFF]">O</span>perations
+            <span className="text-[#79DFFF]">O</span>perations⚡
           </h1>
           <p className="mb-6 leading-normal text-xl">
           We redefine how DAOs handle payroll, making it as dynamic and flexible as the teams that drive them
@@ -41,7 +41,7 @@ export default function Page() {
         </div>
         <div className="flex-1 flex justify-center items-center md:p-8">
           <Image
-            src=""
+            src="/image5.png"
             alt="Image"
             width={400}
             height={200}
@@ -65,7 +65,7 @@ export default function Page() {
           <p className="mb-[10px] text-4xl font-bold">
           Seamless setup for DAOs
           </p>
-          <p className="max-w-md font-semibold mt-4">
+          <p className="max-w-md  text-2xl mt-4">
           mapping DAO’s teams to specific ENS subdomains - this one-time setup aligns the DAO organizational structure with payment streams
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function Page() {
           <p className="mb-[10px] text-4xl font-bold">
           Stream payments effortlessly with Sablier
           </p>
-          <p className="max-w-md font-semibold mt-4">
+          <p className="max-w-md  text-2xl mt-4">
           employees or collaborators can withdraw their accumulated funds at any point from their specific subdomain
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function Page() {
           <p className="mb-[10px] text-4xl font-bold">
           Dynamic ENS integration 
           </p>
-          <p className="max-w-md font-semibold mt-4">
+          <p className="max-w-md  text-2xl mt-4">
           ENS makes payments easy to manage and remember - funds are streamed to recognizable and memorable subdomains aligned with the DAO's structure
           </p>
         </div>
@@ -108,14 +108,11 @@ export default function Page() {
         <div className="flex-1 flex flex-col justify-center items-start text-left md:p-8">
           {/* INSERIRE gif */}
           <p className="mb-[10px] text-4xl font-bold">Ownership flexibility</p>
-          <p className="max-w-md font-semibold mt-4">
+          <p className="max-w-md  text-2xl mt-4">
           as roles within a DAO evolve, payment streams can be easily redirected to new recipients under the same subdomain, without any interruption
           </p>
         </div>
       </div>
-
-
-
 
       <div className="mt-[50px] text-center" id="company">
         <p className="text-4xl font-bold gradient-text">
@@ -126,17 +123,17 @@ export default function Page() {
       <div className="text-white grid grid-cols-3 gap-4 p-4 mb-[120px]">
         <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
-            <h2 className="card-title">Ensures high-quality deliverables through continuous evaluation</h2>
+            <h2 className="card-title" style={{ textAlign: 'center' }}>Ensures high-quality deliverables through continuous evaluation</h2>
           </div>
         </div>
         <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
-            <h2 className="card-title">Makes interaction easy with a user-friendly interface</h2>
+            <h2 className="card-title" style={{ textAlign: 'center' }}>Makes interaction easy with a user-friendly interface</h2>
           </div>
         </div>
         <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
-            <h2 className="card-title">Cuts down boring and errore prone administrative work</h2>
+            <h2 className="card-title" style={{ textAlign: 'center' }}>Cuts down boring and errore prone administrative work</h2>
           </div>
         </div>
       </div>
@@ -149,20 +146,22 @@ export default function Page() {
       <div className="text-white grid grid-cols-3 gap-4 p-4">
         <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
-            <h2 className="card-title">Streamlines the funding process, allowing for quicker project starts</h2>
+            <h2 className="card-title" style={{ textAlign: 'center' }}>Streamlines the funding process, allowing for quicker project starts</h2>
           </div>
         </div>
         <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
-            <h2 className="card-title">Provides a stable stream of funding, ensuring financial security</h2>
+            <h2 className="card-title" style={{ textAlign: 'center' }}>Provides a stable stream of funding, ensuring financial security</h2>
           </div>
         </div>
         <div className="card w-96 glass hover:scale-105 transition-transform duration-300">
           <div className="card-body">
-            <h2 className="card-title">Opens up funding opportunities for innovative small-scale initiatives</h2>
+            <h2 className="card-title" style={{ textAlign: 'center' }}>Opens up funding opportunities for innovative small-scale initiatives</h2>
           </div>
         </div>
       </div>
+
+        <div className="divider"></div>      
     </main>
   );
 }
