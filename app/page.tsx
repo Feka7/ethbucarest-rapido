@@ -41,7 +41,7 @@ export default function Page() {
         </div>
         <div className="flex-1 flex justify-center items-center md:p-8">
           <Image
-            src="/Image 5.png"
+            src=""
             alt="Image"
             width={400}
             height={200}
