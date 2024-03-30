@@ -1,12 +1,12 @@
 "use client";
-
+import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { Address } from "viem";
 import { useAccount, useEnsName, useWriteContract } from "wagmi";
 import { namehash } from "viem/ens";
-import { useReadContract } from 'wagmi'
+import { useReadContract } from "wagmi";
 import { useLocalStorage } from "usehooks-ts";
 import Stream from "./_components/Stream";
 
@@ -16,11 +16,11 @@ type Stream = {
   receiver: String;
   amount: String;
   token: String;
-}
+};
 
 export default function Page() {
   const { writeContractAsync } = useWriteContract();
-  const { address } = useAccount()
+  const { address } = useAccount();
   const [ensDomain, setEnsDomain] = useState("");
   const [amount, setAmount] = useState("");
   const [token, setToken] = useState("");
@@ -28,36 +28,37 @@ export default function Page() {
   const [transferable, setTransferable] = useState("");
   const [start, setStart] = useState("");
   const [duration, setDuration] = useState("");
-  const [value, setValue] = useLocalStorage<Stream>('sablier-stream', {
+  const [value, setValue] = useLocalStorage<Stream>("sablier-stream", {
     amount: "",
     receiver: "",
     sender: "",
     streamId: "",
-    token: ""
-  })
+    token: "",
+  });
 
   // const {data: name} = useEnsName({
   //   address: address,
   // })
 
   const nextStreamId = useReadContract({
-    abi:[ {
-      "inputs": [],
-      "name": "nextStreamId",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    }],
+    abi: [
+      {
+        inputs: [],
+        name: "nextStreamId",
+        outputs: [
+          {
+            internalType: "uint256",
+            name: "",
+            type: "uint256",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
     address: process.env.NEXT_PUBLIC_SABLIER_LOCKUP_LINEAR as Address,
-    functionName: 'nextStreamId',
-  })
-
+    functionName: "nextStreamId",
+  });
 
   async function approve() {
     await writeContractAsync({
@@ -98,8 +99,7 @@ export default function Page() {
   }
 
   async function createStream() {
-  
-  await writeContractAsync({
+    await writeContractAsync({
       abi: [
         {
           inputs: [
@@ -213,9 +213,9 @@ export default function Page() {
       amount: amount,
       receiver: ensDomain,
       sender: address || "",
-      token: "DAI"
-    })
-    nextStreamId.refetch()
+      token: "DAI",
+    });
+    nextStreamId.refetch();
   }
 
   const handleEnsDomainChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -247,99 +247,122 @@ export default function Page() {
   };
 
   return (
-    <main className="min-screen flex flex-col justify-items-center items-center">
-      <div className="p-4">
-        <ConnectButton />
-      </div>
-      <div className=" shadow card-bordered">
-        <div className="card-body">
-          <h3 className="card-title">Create stream</h3>
-          <label className="input input-bordered flex items items-center gap-2">
-            Ens domain
-            <input
-              type="text"
-              className="grow"
-              value={ensDomain}
-              onChange={handleEnsDomainChange}
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">
-            Amount
-            <input
-              type="text"
-              className="grow"
-              placeholder=""
-              value={amount}
-              onChange={handleAmountChange}
-            />
-          </label>
-          <select
-            className="select select-bordered w-full max-w-xs"
-            value={token}
-            onChange={handleTokenChange}
-          >
-            <option disabled value="">
-              Token
-            </option>
-            <option value="0xFF34B3d4Aee8ddCd6F9AFFFB6Fe49bD371b8a357">
-              DAI
-            </option>
-          </select>
-          <select
-            className="select select-bordered w-full max-w-xs"
-            value={cancelable}
-            onChange={handleCancelableChange}
-          >
-            <option disabled value="">
-              Cancelable
-            </option>
-            <option value="True">True</option>
-            <option value="False">False</option>
-          </select>
-          <select
-            className="select select-bordered w-full max-w-xs"
-            value={transferable}
-            onChange={handleTransferableChange}
-          >
-            <option disabled value="">
-              Transferable
-            </option>
-            <option value="True">True</option>
-            <option value="False">False</option>
-          </select>
-          <select
-            className="select select-bordered w-full max-w-xs"
-            value={start}
-            onChange={handleStartChange}
-          >
-            <option disabled value="">
-              Start
-            </option>
-            <option value="0">Now</option>
-            <option value="3600">1 hour</option>
-            <option value="86400">1 day</option>
-          </select>
-          <select
-            className="select select-bordered w-full max-w-xs"
-            value={duration}
-            onChange={handleDurationChange}
-          >
-            <option disabled value="">
-              Duration
-            </option>
-            <option value="3600">1 hour</option>
-            <option value="86400">1 day</option>
-            <option value="604800">1 week</option>
-          </select>
+    <main style={{ backgroundColor: "#0C0124", paddingBottom: "20px" }}>
+      <div className="min-screen flex flex-col justify-items-center items-center">
+        <div className="logo mt-8">
+          <Image src="/Logo.png" alt="Logo" width={200} height={80} />
         </div>
-        <button className="btn" onClick={approve}>
-          Approve
-        </button>
-        <button className="btn" onClick={createStream}>
-          Create
-        </button>
+        <div className="p-4 mb-3">
+          <ConnectButton />
+        </div>
+        <div className="card-bordered rounded-xl bg-gray-800 shadow-custom-purple p-3 w-6/12 ">
+          <div className="card-body pt-2">
+            <h3 className="card-title text-2xl mb-3 text-white">Create stream</h3>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-semibold text-white">Ens domain</span>
+              <label className="input input-bordered flex items-center">
+                <input
+                  type="text"
+                  className="grow"
+                  value={ensDomain}
+                  onChange={handleEnsDomainChange}
+                />
+              </label>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-semibold text-white">Amount</span>
+              <label className="input input-bordered flex items-center">
+                <input
+                  type="text"
+                  className="grow"
+                  placeholder=""
+                  value={amount}
+                  onChange={handleAmountChange}
+                />
+              </label>
+            </div>
+
+            {/* Inizia la griglia per i select */}
+            <div className="grid grid-cols-2 gap-4">
+              <select
+                className="select select-bordered w-full"
+                value={token}
+                onChange={handleTokenChange}
+              >
+                <option disabled value="">
+                  Token
+                </option>
+                <option value="0xFF34B3d4Aee8ddCd6F9AFFFB6Fe49bD371b8a357">
+                  DAI
+                </option>
+              </select>
+              <select
+                className="select select-bordered w-full"
+                value={cancelable}
+                onChange={handleCancelableChange}
+              >
+                <option disabled value="">
+                  Cancelable
+                </option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+              </select>
+              <select
+                className="select select-bordered w-full"
+                value={transferable}
+                onChange={handleTransferableChange}
+              >
+                <option disabled value="">
+                  Transferable
+                </option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+              </select>
+              <select
+                className="select select-bordered w-full"
+                value={start}
+                onChange={handleStartChange}
+              >
+                <option disabled value="">
+                  Start
+                </option>
+                <option value="0">Now</option>
+                <option value="3600">1 hour</option>
+                <option value="86400">1 day</option>
+              </select>
+            </div>
+            <div className="flex justify-center mt-4">
+              <select
+                className="select select-bordered w-full max-w-xs"
+                value={duration}
+                onChange={handleDurationChange}
+              >
+                <option disabled value="">
+                  Duration
+                </option>
+                <option value="3600">1 hour</option>
+                <option value="86400">1 day</option>
+                <option value="604800">1 week</option>
+              </select>
+            </div>
+            <div className="flex gap-2 mt-4">
+              <button
+                className="enter-app-btn"
+                onClick={approve}
+              >
+                Approve
+              </button>
+              <button
+                className="enter-app-btn"
+                onClick={createStream}
+              >
+                Create
+              </button>
+            </div>
+          </div>
+        </div>
+        <Stream />
       </div>
-      <Stream />
     </main>
   );
 }
