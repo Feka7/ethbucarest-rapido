@@ -155,7 +155,7 @@ export default function Page() {
             Seamless setup for DAOs
           </p>
           <p className="max-w-md font-semibold mt-4">
-            Begin by mapping your DAO's departments to specific ENS subdomains,
+            Begin by mapping your DAO&apos;s departments to specific ENS subdomains,
             such as product.dao.eth or marketing.dao.eth. This one-time setup
             aligns your organizational structure with your payment streams.
           </p>
@@ -174,8 +174,8 @@ export default function Page() {
             Department-specific streams
           </p>
           <p className="max-w-md font-semibold mt-4">
-            Use Sablier to direct funds to each department's ENS subdomain.Set
-            up streams based on your payroll schedule, whether it's for
+            Use Sablier to direct funds to each department&apos;s ENS subdomain.Set
+            up streams based on your payroll schedule, whether it&apos;s for
             short-term projects or ongoing compensation.
           </p>
         </div>
@@ -189,7 +189,7 @@ export default function Page() {
           <p className="max-w-md font-semibold mt-4">
             We leverage ENS to make payments easy to manage and remember.Instead
             of dealing with complex wallet addresses, funds are streamed to
-            recognizable and memorable subdomains aligned with your DAO's
+            recognizable and memorable subdomains aligned with your DAO&apos;s
             structure.
           </p>
         </div>
@@ -219,7 +219,7 @@ export default function Page() {
           <p className="mb-[10px] text-4xl font-bold">Withdraw anytime</p>
           <p className="max-w-md font-semibold mt-4">
             Employees or collaborators can withdraw their accumulated funds at
-            any point from their department's subdomain. This real-time access
+            any point from their department&apos;s subdomain. This real-time access
             to earnings empowers them with financial flexibility and security.
           </p>
         </div>
@@ -289,7 +289,7 @@ export default function Page() {
             <h2 className="card-title">Adaptive compensation:</h2>
             <p>
               as your role in the DAO evolves, your payment stream adjusts
-              seamlessly, ensuring you're compensated for your current
+              seamlessly, ensuring you&apos;re compensated for your current
               contributions without interruption.
             </p>
           </div>
