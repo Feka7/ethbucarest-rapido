@@ -4,8 +4,19 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { Address } from "viem";
-import { useAccount, useWriteContract } from "wagmi";
+import { useAccount, useEnsName, useWriteContract } from "wagmi";
 import { namehash } from "viem/ens";
+import { useReadContract } from 'wagmi'
+import { useLocalStorage } from "usehooks-ts";
+import Stream from "./_components/Stream";
+
+type Stream = {
+  streamId: String;
+  sender: String;
+  receiver: String;
+  amount: String;
+  token: String;
+}
 
 export default function Page() {
   const { writeContractAsync } = useWriteContract();
@@ -17,6 +28,36 @@ export default function Page() {
   const [transferable, setTransferable] = useState("");
   const [start, setStart] = useState("");
   const [duration, setDuration] = useState("");
+  const [value, setValue] = useLocalStorage<Stream>('sablier-stream', {
+    amount: "",
+    receiver: "",
+    sender: "",
+    streamId: "",
+    token: ""
+  })
+
+  // const {data: name} = useEnsName({
+  //   address: address,
+  // })
+
+  const nextStreamId = useReadContract({
+    abi:[ {
+      "inputs": [],
+      "name": "nextStreamId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }],
+    address: process.env.NEXT_PUBLIC_SABLIER_LOCKUP_LINEAR as Address,
+    functionName: 'nextStreamId',
+  })
+
 
   async function approve() {
     await writeContractAsync({
@@ -57,6 +98,7 @@ export default function Page() {
   }
 
   async function createStream() {
+  
   await writeContractAsync({
       abi: [
         {
@@ -156,7 +198,7 @@ export default function Page() {
         [
           address,
           process.env.NEXT_PUBLIC_RAPIDO_SMART_CONTRACT as Address,
-          amount,
+          Number(amount) * 1e18,
           token,
           cancelable === "True" ? true : false,
           transferable === "True" ? true : false,
@@ -166,9 +208,14 @@ export default function Page() {
         namehash(ensDomain),
       ],
     });
-
-    
-
+    setValue({
+      streamId: nextStreamId.data?.toString() || "",
+      amount: amount,
+      receiver: ensDomain,
+      sender: address || "",
+      token: "DAI"
+    })
+    nextStreamId.refetch()
   }
 
   const handleEnsDomainChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -234,11 +281,8 @@ export default function Page() {
             <option disabled value="">
               Token
             </option>
-            <option value="0x6b175474e89094c44da98b954eedeac495271d0f">
+            <option value="0xFF34B3d4Aee8ddCd6F9AFFFB6Fe49bD371b8a357">
               DAI
-            </option>
-            <option value="0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3">
-              MIM
             </option>
           </select>
           <select
@@ -295,6 +339,7 @@ export default function Page() {
           Create
         </button>
       </div>
+      <Stream />
     </main>
   );
 }

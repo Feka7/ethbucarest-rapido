@@ -30,10 +30,7 @@ const config = getDefaultConfig({
   appName: "Rapido",
   projectId: "YOUR_PROJECT_ID",
   chains: [
-    {
-      ...tenderly_fork_chain,
-      iconBackground: "#6e56cf",
-    },
+    sepolia
   ],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
