@@ -248,14 +248,16 @@ export default function Page() {
 
   return (
     <main style={{ backgroundColor: "#0C0124", paddingBottom: "20px" }}>
-      <div className="min-screen flex flex-col justify-items-center items-center">
-        <div className="logo mt-8">
+      <div className="min-h-screen flex flex-col justify-items-center items-center">
+        <div className="flex max-w-3xl w-full mt-6">
+        <div className="grow">
           <Image src="/Logo.png" alt="Logo" width={200} height={80} />
         </div>
-        <div className="p-4 mb-3">
+        <div>
           <ConnectButton />
         </div>
-        <div className="card-bordered rounded-xl bg-gray-800 shadow-custom-purple p-3 w-6/12 ">
+        </div>
+        <div className="card-bordered rounded-xl bg-gray-800 shadow-custom-purple p-3 w-6/12 mt-6">
           <div className="card-body pt-2">
             <h3 className="card-title text-2xl mb-3 text-white">Create stream</h3>
             <div className="flex flex-col gap-2">
@@ -330,8 +332,6 @@ export default function Page() {
                 <option value="3600">1 hour</option>
                 <option value="86400">1 day</option>
               </select>
-            </div>
-            <div className="flex justify-center mt-4">
               <select
                 className="select select-bordered w-full max-w-xs"
                 value={duration}
@@ -344,8 +344,7 @@ export default function Page() {
                 <option value="86400">1 day</option>
                 <option value="604800">1 week</option>
               </select>
-            </div>
-            <div className="flex gap-2 mt-4">
+              <div className="flex gap-2 place-content-end">
               <button
                 className="enter-app-btn"
                 onClick={approve}
@@ -359,9 +358,12 @@ export default function Page() {
                 Create
               </button>
             </div>
+            </div>
           </div>
         </div>
+        <div className="mt-8">
         <Stream />
+        </div>
       </div>
     </main>
   );
