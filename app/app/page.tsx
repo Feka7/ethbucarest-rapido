@@ -281,11 +281,8 @@ export default function Page() {
             <option disabled value="">
               Token
             </option>
-            <option value="0x6b175474e89094c44da98b954eedeac495271d0f">
+            <option value="0xFF34B3d4Aee8ddCd6F9AFFFB6Fe49bD371b8a357">
               DAI
-            </option>
-            <option value="0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3">
-              MIM
             </option>
           </select>
           <select
